@@ -2,7 +2,8 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,logout,login
 from .models import blog,contact,product
-from .forms import productForm
+from .forms import productForm,userreggistarationform
+from django.contrib import messages
 
 # Create your views here.
 def show_home_page(request):
@@ -34,6 +35,19 @@ def show_contact_us_page(request):
         print(contacts)
         contacts.save()
     return render(request,'contact_us.html')
+
+def show_registartion_page(request):
+    if request.method=='POST':
+        form = userreggistarationform(request.POST)
+        if form.is_valid():
+            messages.success(request, 'User registration successfull...')
+            form.save()
+            return redirect('register')
+        else:
+            print(form.errors)
+    else:
+        form = userreggistarationform()
+    return render(request,'registration_page.html',{'form':form})
 
 def show_login_page(request):
     if request.method=='POST':

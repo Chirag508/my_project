@@ -9,6 +9,7 @@ urlpatterns = [
     path('blogs/<int:blog_id>/', views.show_blog_detail, name='blog_detail'),
     path('login/',views.show_login_page,name='login'),
     path('logout/',views.logout_view,name='logout'),
+    path('register/',views.show_registartion_page,name='register'),
     path('product/',views.show_product_page,name='product'),
     path('product/delete_product/<int:id>',views.delete_product_data,name='delete_product'),
     path('product/update_product/<int:id>',views.update_product_data,name='update_product'),
