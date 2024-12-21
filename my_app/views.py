@@ -5,7 +5,7 @@ from .models import blog,contact,product
 from .forms import productForm,userreggistarationform
 from django.contrib import messages
 from django.core.mail import send_mail
-
+import datetime
 
 # Create your views here.
 def show_home_page(request):
@@ -34,19 +34,20 @@ def show_contact_us_page(request):
         message = request.POST.get('message')
         # print(name,email,phone,message)
         contacts = contact(name =name,email =email,phone =phone,message =message)
-        print(contacts)
         contacts.save()
         subject = f"New Contact Us Message from {name}"
         message_body = f"""
+
         Name: {name}
         Email: {email}
         Phone: {phone}
-        
+
+        time:{datetime.datetime.now()}
         Message:
         {message}
         """
         from_email = 'chiragpanchal143143@gmail.com'
-        recipient_list = ['chiragpanchal143143@gmail.com']  # Replace with your email or admin's email
+        recipient_list = ['chiragpanchal143143@gmail.com']  
         send_mail(subject, message_body, from_email, recipient_list)
     return render(request,'contact_us.html')
 
