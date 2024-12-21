@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-t3q$bihi+rj0nte67o=thjsj&uk_*a212rxcm5q+%^z#2x27p9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -87,6 +87,14 @@ import dj_database_url
 DATABASES = {
     'default': dj_database_url.config(default='postgresql://my_project_datatbase_user:Yy5mbjxepmGJGDkG1XXc9Wvjan4pvZwT@dpg-ct837368ii6s73cbvt1g-a.oregon-postgres.render.com/my_project_datatbase')
 }
+# settings.py
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'chiragpanchal143143@gmail.com' 
+EMAIL_HOST_PASSWORD = 'tdtt mkch lnum xqrn'  # Replace with your email password or app password
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
